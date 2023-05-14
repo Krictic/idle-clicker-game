@@ -1,9 +1,9 @@
-import "../styles/upgrades.css"
+import "../styles/upgrades.css";
 
 interface Upgrade {
   cost: number;
   incrementor: number;
-  key: number
+  key: number;
 }
 
 interface UpgradesProps {
@@ -18,8 +18,8 @@ function Upgrades(props: UpgradesProps) {
   const upgradeTiers: Upgrade[] = [
     { cost: 10, incrementor: 1, key: 1 },
     { cost: 100, incrementor: 10, key: 2 },
-    { cost: 1000, incrementor: 25, key: 3},
-    { cost: 10000, incrementor: 100, key: 4 }
+    { cost: 1000, incrementor: 25, key: 3 },
+    { cost: 10000, incrementor: 100, key: 4 },
   ];
 
   function upgradeIncrementor(upgradeCost: number, incrementor: number) {
@@ -33,10 +33,13 @@ function Upgrades(props: UpgradesProps) {
     <div>
       {upgradeTiers.map((tier) => {
         return (
-          <button key={tier.key} onClick={() => upgradeIncrementor(tier.cost, tier.incrementor)}>
+          <button
+            key={tier.key}
+            onClick={() => upgradeIncrementor(tier.cost, tier.incrementor)}
+          >
             Upgrade Button ({tier.cost})
           </button>
-        )
+        );
       })}
     </div>
   );
