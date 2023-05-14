@@ -6,8 +6,16 @@ interface IdleIncomeProps {
 }
 
 function IdleIncome(props : IdleIncomeProps) {
-    const [incrementor, setIncrementor] = useState(1);
+    const [incrementor, setIncrementor] = useState<number>(() => {
+        const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '1', 10);
+        return initialIncrementor;
+      });
 
+
+      useEffect(() => {
+        window.localStorage.setItem('incrementor', incrementor.toString());
+      }, [incrementor]);
+      
     function handleButtonClick() {
         if (props.count >= 1000) {
             setIncrementor(incrementor + 1);
