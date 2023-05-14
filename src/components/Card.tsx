@@ -1,12 +1,31 @@
-import { useState } from "react";
+// React imports
+import { useState, useEffect } from 'react';
+
+// Component Imports
 import DisplayCount from "./DisplayCount";
 import Button from "./Buttons";
 import Upgrades from "./ClickerUpgrades";
 import IdleIncome from "./IdleIncome";
 
 function Card() {
-  const [count, setCount] = useState(0);
-  const [incrementor, setIncrementor] = useState(1);
+  const [count, setCount] = useState<number>(() => {
+    // Load the initial count state from localStorage, or default to 0 if not present.
+    const initialCount = parseInt(window.localStorage.getItem('count') || '0', 10);
+    return initialCount;
+  });
+
+  const [incrementor, setIncrementor] = useState<number>(() => {
+    const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '1', 10);
+    return initialIncrementor;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem('count', count.toString());
+  }, [count]);
+  useEffect(() => {
+    window.localStorage.setItem('incrementor', incrementor.toString());
+  }, [incrementor]);
+
 
   function handleButtonClick() {
     setCount(count + incrementor);
