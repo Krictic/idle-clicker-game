@@ -1,0 +1,60 @@
+
+import "../styles/upgrades.css"
+
+interface UpgradesProps {
+    count: number,
+    incrementor: number;
+    setIncrementor: (count: number) => void,
+    setCount: (count: number) => void
+}
+
+function Upgrades(props: UpgradesProps) {
+  const count = props.count;
+  const upgradeCost1 = 10;
+  const upgradeCost2 = 100;
+  const upgradeCost3 = 1000;
+  const tierList = [upgradeCost1, upgradeCost2, upgradeCost3];
+
+
+
+  function upgradeIncrementor(upgradeTier : number) {
+    switch(upgradeTier) {
+        case upgradeCost1:
+            if (count >= upgradeCost1) {
+                props.setIncrementor(props.incrementor + 1);
+                props.setCount(count - upgradeCost1);
+              }
+              break;
+        case upgradeCost2:
+            if (count >= upgradeCost2) {
+                props.setIncrementor(props.incrementor + 10);
+                props.setCount(count - upgradeCost2);
+              }
+              break;
+        case upgradeCost3:
+            if (count >= upgradeCost3) {
+                props.setIncrementor(props.incrementor + 25);
+                props.setCount(count - upgradeCost3);
+                }
+                break;
+        default:
+            break;
+    }
+    
+  }
+
+  return (
+    <div>
+        {tierList.map(tier => {
+            return (
+                <button onClick={() => upgradeIncrementor(tier)}>Upgrade Button({tier})</button>
+            )
+        })}
+        
+    </div>
+    
+    
+  );
+}
+
+export default Upgrades;
