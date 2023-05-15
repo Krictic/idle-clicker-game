@@ -8,6 +8,8 @@ import Upgrades from "./ClickerUpgrades";
 import IdleIncome from "./IdleIncome";
 
 function Card() {
+
+
   const [count, setCount] = useState<number>(() => {
     // Load the initial count state from localStorage, or default to 0 if not present.
     const initialCount = parseInt(window.localStorage.getItem('count') || '0', 10);
@@ -16,7 +18,7 @@ function Card() {
 
   const [incrementor, setIncrementor] = useState<number>(() => {
     const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '1', 10);
-    return initialIncrementor;
+   return initialIncrementor;
   });
 
   useEffect(() => {
@@ -29,6 +31,11 @@ function Card() {
 
   function handleButtonClick() {
     setCount(count + incrementor);
+  }
+
+  const reset = () => {
+    setCount(0);
+    setIncrementor(1);
   }
 
   return (
@@ -46,6 +53,7 @@ function Card() {
         setIncrementor={setIncrementor}
       />
       <IdleIncome count={count} setCount={setCount} />
+      <button onClick={reset}>Reset Clickers</button>
     </div>
   );
 }
