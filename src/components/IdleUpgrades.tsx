@@ -37,7 +37,7 @@ function IdleUpgrades(props : IdleIncomeProps) {
         <div>
             <p>Idle Income: {idleIncrementor}</p>
             <button onClick={handleButtonClick}>Upgrade Idle Income by 1 (cost 1000)</button>
-            <button onClick={() => {setIdleIncrementor(0)}}>Reset Idle</button>
+            <button onClick={() => {setIdleIncrementor(1)}}>Reset Idle</button>
         </div>
     );
 }

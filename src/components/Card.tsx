@@ -39,7 +39,7 @@ function Card() {
 
   return (
     <div className="card">
-      <AccurateTimer/>
+      <AccurateTimer setCount={setCount}/>
       <DisplayCount count={count} />
       <Button
         count={count}
