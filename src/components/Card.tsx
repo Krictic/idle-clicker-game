@@ -1,5 +1,5 @@
 // React imports
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Component Imports
 import DisplayCount from "./DisplayCount";
@@ -13,32 +13,27 @@ function Card() {
 
   const [count, setCount] = useState<number>(() => {
     // Load the initial count state from localStorage, or default to 0 if not present.
-    const initialCount = parseInt(
-      window.localStorage.getItem("count") || "0",
-      10
-    );
+    const initialCount = parseInt(window.localStorage.getItem('count') || '0', 10);
     return initialCount;
   });
 
   const [incrementor, setIncrementor] = useState<number>(() => {
-    const initialIncrementor = parseInt(
-      window.localStorage.getItem("incrementor") || "1",
-      10
-    );
+    const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '1', 10);
     return initialIncrementor;
   });
 
   useEffect(() => {
-    window.localStorage.setItem("count", count.toString());
+    window.localStorage.setItem('count', count.toString());
   }, [count]);
   useEffect(() => {
-    window.localStorage.setItem("incrementor", incrementor.toString());
+    window.localStorage.setItem('incrementor', incrementor.toString());
   }, [incrementor]);
 
   const reset = () => {
     setCount(initialStateCount);
     setIncrementor(initialStateIncrementor);
   };
+
 
   function handleButtonClick() {
     setCount(count + incrementor);
