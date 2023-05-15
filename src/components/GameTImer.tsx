@@ -25,5 +25,5 @@ export default function GameTimer() {
       };
     }, [timer]);
   
-    return <div>{gameTimerDisplay}</div>;
+    return <div>Persistent Game Timer:{gameTimerDisplay}</div>;
   }
