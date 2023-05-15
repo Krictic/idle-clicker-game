@@ -9,6 +9,7 @@ import IdleUpgrades from "./IdleUpgrades";
 import AccurateTimer from './AccurateTimer';
 
 function Card() {
+  // States
   const [count, setCount] = useState<number>(() => {
     // Load the initial count state from localStorage, or default to 0 if not present.
     const initialCount = parseInt(window.localStorage.getItem('count') || '0', 10);
@@ -20,6 +21,12 @@ function Card() {
    return initialIncrementor;
   });
 
+  const [idleIncrementor, setIdleIncrementor] = useState<number>(() => {
+    const initialIncrementor = parseInt(window.localStorage.getItem('idleIncrementor') || '1', 10);
+    return initialIncrementor;
+  });
+
+  // Effects
   useEffect(() => {
     window.localStorage.setItem('count', count.toString());
   }, [count]);
@@ -47,7 +54,8 @@ function Card() {
         incrementor={incrementor}
         setIncrementor={setIncrementor}
       />
-      <IdleUpgrades count={count} setCount={setCount} setIncrementor={setIncrementor} />
+      <IdleUpgrades count={count} setCount={setCount} idleIncrementor={idleIncrementor} setIdleIncrementor={setIdleIncrementor}/>
+      <button onClick={() => {setIdleIncrementor(1), setIncrementor(1), setCount(0)}}>Hard Reset</button>
     </div>
   );
 }
