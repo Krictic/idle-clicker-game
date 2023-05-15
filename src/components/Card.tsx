@@ -52,8 +52,7 @@ function Card() {
         incrementor={incrementor}
         setIncrementor={setIncrementor}
       />
-      <IdleUpgrades count={count} setCount={setCount} />
-      <button onClick={reset}>Reset Clickers</button>
+      <IdleUpgrades count={count} setCount={setCount} setIncrementor={setIncrementor} />
     </div>
   );
 }
