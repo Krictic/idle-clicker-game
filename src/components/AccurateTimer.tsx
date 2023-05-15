@@ -4,7 +4,7 @@ import { useTimer } from "react-use-precision-timer";
 export default function AccurateTimer() {
     const [displayTimer, setDisplayTimer] = useState(0);
     const callback = React.useCallback(() => setDisplayTimer(prevTime => prevTime + 1), []);
-    const timer = useTimer({ delay: 100 }, callback);
+    const timer = useTimer({ delay: 1000 }, callback);
 
     useEffect(() => {
         timer.start();
