@@ -3,6 +3,8 @@ import { useTimer } from "react-use-precision-timer";
 
 export default function GameTimer() {
     // Its too bad I couldn´t figure out a way of pulling this state up to Cards, but this should work for now.
+    // I just noticed this only worked as long as the client is open, so this entire thing is useless.
+    // Todo: refactor this to use unixEpoch.
     const [gameTimerDisplay, setGameTimerDisplay] = useState<number>(() => {
         const initialTImer = parseInt(window.localStorage.getItem("gameTimer") || "0", 10);
         return initialTImer;
