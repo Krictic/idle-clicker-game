@@ -6,7 +6,7 @@ import DisplayCount from "./DisplayCount";
 import Button from "./Buttons";
 import Upgrades from "./ClickerUpgrades";
 import IdleUpgrades from "./IdleUpgrades";
-import AccurateTimer from './AccurateTimer';
+import SessionTimer from './AccurateTimer';
 
 function Card() {
   // States
@@ -41,7 +41,7 @@ function Card() {
 
   return (
     <div className="card">
-      <AccurateTimer setCount={setCount}/>
+      <SessionTimer setCount={setCount}/>
       <DisplayCount count={count} />
       <Button
         count={count}

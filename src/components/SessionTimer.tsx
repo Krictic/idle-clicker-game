@@ -6,7 +6,7 @@ interface ATProps {
 }
 
 // This is for testing purposes only.
-export default function AccurateTimer(props : ATProps) {
+export default function SessionTimer(props : ATProps) {
     const [displayTimer, setDisplayTimer] = useState(0);
     const callback = React.useCallback(() => setDisplayTimer(prevTime => prevTime + 1), []);
     const timer = useTimer({ delay: 1000 }, callback);
