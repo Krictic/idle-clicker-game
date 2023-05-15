@@ -5,11 +5,9 @@ import { useState, useEffect } from 'react';
 import DisplayCount from "./DisplayCount";
 import Button from "./Buttons";
 import Upgrades from "./ClickerUpgrades";
-import IdleIncome from "./IdleIncome";
+import IdleUpgrades from "./IdleUpgrades";
 
 function Card() {
-
-
   const [count, setCount] = useState<number>(() => {
     // Load the initial count state from localStorage, or default to 0 if not present.
     const initialCount = parseInt(window.localStorage.getItem('count') || '0', 10);
@@ -52,7 +50,7 @@ function Card() {
         incrementor={incrementor}
         setIncrementor={setIncrementor}
       />
-      <IdleIncome count={count} setCount={setCount} />
+      <IdleUpgrades count={count} setCount={setCount} />
       <button onClick={reset}>Reset Clickers</button>
     </div>
   );
