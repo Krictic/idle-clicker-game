@@ -6,7 +6,8 @@ import DisplayCount from "./DisplayCount";
 import Button from "./Buttons";
 import Upgrades from "./ClickerUpgrades";
 import IdleUpgrades from "./IdleUpgrades";
-import SessionTimer from './AccurateTimer';
+import SessionTimer from './SessionTimer';
+import GameTimer from './GameTImer';
 
 function Card() {
   // States
@@ -26,6 +27,7 @@ function Card() {
     return initialIncrementor;
   });
 
+  
   // Effects
   useEffect(() => {
     window.localStorage.setItem('count', count.toString());
@@ -41,6 +43,7 @@ function Card() {
 
   return (
     <div className="card">
+      <GameTimer />
       <SessionTimer setCount={setCount}/>
       <DisplayCount count={count} />
       <Button
