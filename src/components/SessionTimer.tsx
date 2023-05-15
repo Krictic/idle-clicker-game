@@ -17,7 +17,7 @@ export default function SessionTimer(props : ATProps) {
 
     return (
         <>
-        <div>Accurate Timer: {displayTimer}s</div>
+        <div>Session Timer: {displayTimer}s</div>
         <button onClick={() => setDisplayTimer(0)}>Reset Timer Only</button>
         <button onClick={() => {setDisplayTimer(0), props.setCount(0)}}>Reset Timer and Count</button>
         </>
