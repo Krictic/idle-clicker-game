@@ -32,11 +32,6 @@ function Card() {
     setCount(count + incrementor);
   }
 
-  const reset = () => {
-    setCount(0);
-    setIncrementor(1);
-  }
-
   return (
     <div className="card">
       <AccurateTimer setCount={setCount}/>
