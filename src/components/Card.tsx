@@ -6,6 +6,7 @@ import DisplayCount from "./DisplayCount";
 import Button from "./Buttons";
 import Upgrades from "./ClickerUpgrades";
 import IdleUpgrades from "./IdleUpgrades";
+import AccurateTimer from './AccurateTimer';
 
 function Card() {
   const [count, setCount] = useState<number>(() => {
@@ -38,6 +39,7 @@ function Card() {
 
   return (
     <div className="card">
+      <AccurateTimer/>
       <DisplayCount count={count} />
       <Button
         count={count}
