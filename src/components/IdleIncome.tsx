@@ -6,43 +6,37 @@ interface IdleIncomeProps {
 }
 
 function IdleIncome(props : IdleIncomeProps) {
-    const initialIdleIncrementor = 0;
-    const [idleIncrementor, setIdleIncrementor] = useState<number>(() => {
-        const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '0', 10);
+    const [incrementor, setIncrementor] = useState<number>(() => {
+        const initialIncrementor = parseInt(window.localStorage.getItem('incrementor') || '1', 10);
         return initialIncrementor;
       });
 
 
       useEffect(() => {
-        window.localStorage.setItem('incrementor', idleIncrementor.toString());
-      }, [idleIncrementor]);
+        window.localStorage.setItem('incrementor', incrementor.toString());
+      }, [incrementor]);
       
     function handleButtonClick() {
         if (props.count >= 1000) {
-            setIdleIncrementor(idleIncrementor + 1);
+            setIncrementor(incrementor + 1);
             props.setCount(props.count - 1000)
         }
-      }
-      // temporary solution until I find a better one.
-      function reset() {
-        setIdleIncrementor(initialIdleIncrementor);
       }
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.setCount(props.count + idleIncrementor);
+            props.setCount(props.count + incrementor);
         }, 1000);
 
         return () => {
             clearTimeout(timeout);
         };
-    }, [idleIncrementor, props, props.count, props.setCount]);
+    }, [incrementor, props, props.count, props.setCount]);
     
     return (
         <div>
-            <p>Idle Income: {idleIncrementor}</p>
+            <p>Idle Income: {incrementor}</p>
             <button onClick={handleButtonClick}>Upgrade Idle Income by 1 (cost 1000)</button>
-            <button onClick={reset}>Reset Idle Income</button> 
         </div>
     );
 }
